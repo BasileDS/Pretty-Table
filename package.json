@@ -1,21 +1,22 @@
 {
   "name": "pretty-table-ds",
-  "version": "1.0.0",
-  "description": "This library provides a react table component to enhance your website data presentation. create your tables, configure each tables by setting a simple \"config\" object in props, add your data and here it is!",
-  "main": "index.js",
+  "version": "1.0.4",
+  "description": "",
+  "main": "prettyTable/PrettyTable.jsx",
   "homepage": "https://github.com/basileds/pretty-table",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/basileds/pretty-table.git"
   },
+  "dependencies": {
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "table"
   ],
-  "author": "Basile DS",
-  "license": "ISC",
-  "dependencies": {
-  }
+  "author": "Yogesh Chavan <myogeshchavan97@gmail.com>",
+  "license": "ISC"
 }
