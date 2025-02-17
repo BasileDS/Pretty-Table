@@ -179,7 +179,7 @@ export default function PrettyTable ({data, config}) {
                                     onChange={(e) => handleSearchByFilter(e)} 
                                     className="pt-filters-search"
                                 />
-                                <img src={searchIcon} id="pt-search-icon" className="pt-search-icon"/>
+                                <img src={searchIcon} id="pt-search-icon" alt="search icon" className="pt-search-icon"/>
                             </div>
                         )
                     }
@@ -200,7 +200,7 @@ export default function PrettyTable ({data, config}) {
                     <p className="pt-filters-order">
                         Show
                         <select 
-                        id="entries-to-display" 
+                        id="entries-to-display"
                         defaultValue={entriesNbToDisplay} 
                         onChange={(e) => handleEntriesNbChange(e)} 
                         className="pt-filters-value">
