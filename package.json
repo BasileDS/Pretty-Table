@@ -1,0 +1,15 @@
+{
+  "name": "pretty-table-ds",
+  "version": "1.0.0",
+  "description": "This library provides a react table component to enhance your website data presentation. create your tables, configure each tables by setting a simple \"config\" object in props, add your data and here it is!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.9"
+  }
+}
