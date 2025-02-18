@@ -6,7 +6,7 @@ Welcome to the *Pretty Table* official documentation. This library provide a Rea
 - Responsive react table component
 - Create your table with a simple "data" object
 - Configure your table with a simple "config" object
-- Select how many table rows to display
+- Select how many table rows to display 
 - Navigate through page by clicking "prev" and "next button
 - Manage display order (ascending, descending)
 - Search bar to filter data (optional)
