@@ -31,26 +31,48 @@ But as you can see when loading the page, an error message pops up. Prety Table 
 ### The `{data}` and `{config}` mandatory objects
 
 Our Pretty Table component needs two arguments to work fine. The first one is `{data}` which expect to receive a object of two entries :
-1. First entry: an object of data to be displayed on our table.
-2. Second entry: an array of objects to configure the table columns.
+
+1. First entry: an object or JSON file of data to be displayed on our table. (Ex: yourDataToDisplay)
+2. Second entry: an array of objects to configure the table columns. These objects must have a `title` and a `data` entry.
+    The `title` is the string that will be shown of the thead table column. 
+    The `data` is the string that is used to run logical conditions when sorting the table for instance.
+Those informations are mandatory for the table to work as expected.
+
+**Example :**
 ```
-{
+    const yourDataToDisplay = [
+        {
+            firstName: "Lorène",
+            lastName: "Génot",
+            startDate: "26/02/2025"
+        },
+        {
+            firstName: "Clémentine",
+            lastName: "Henry",
+            startDate: "12/02/2025"
+        },
+        {
+            ...
+        }
+    ]
+
     const data = {
-        data: dataToDisplay,
+        data: yourDataToDisplay,
         columns: [
             { title: 'First Name', data: 'firstName' },
             { title: 'Last Name', data: 'lastName' },
-            { title: 'Start Date', data: 'startDate' },
-            { title: 'Department', data: 'department' },
-            { title: 'Date of Birth', data: 'dateOfBirth' },
-            { title: 'Street', data: 'street' },
-            { title: 'City', data: 'city' },
-            { title: 'State', data: 'state' },
-            { title: 'Zip Code', data: 'zipCode' }
+            { title: 'Start Date', data: 'startDate' }
         ]
     }
-}
+
+    function MyPage () {
+        return (
+            <PrettyTable data={data} />
+        )
+    }
 ```
+
+**! important :** As you can see in the above two examples, the data objects to be displayed on our table must have the exact same structure as the columns data configuration.
 
 ## Pretty Table Architecture
 
