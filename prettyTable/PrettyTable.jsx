@@ -5,20 +5,8 @@ import getRandomId from "./utils/randomId"
 import { useEffect } from "react"
 
 import "./pretty-table.css"
-
 import searchIcon from "./assets/search-button.svg"
-
-// Format data from simple object to array of objects for each row
-function formatEmployees(employee) {
-    const key = Object.keys(employee)
-    const value = Object.values(employee)
-    const employeeData = []
-    for (let i = 0; i < value.length; i++) {
-        const data = { key: key[i], value: value[i] }
-        employeeData.push(data)
-    }
-    return employeeData
-}
+import TableBody from "./components/TableBody"
 
 /** 
  * React component : returns the pretty table based on data object and config
@@ -32,7 +20,7 @@ export default function PrettyTable ({data, config}) {
     const [entriesNbToDisplay, setEntriesNbToDisplay] = useState(5)
     const [currentPage, setCurrentPage] = useState(1)
     const [sortingType, setSortingType] = useState(null)
-    const [employeesList] = useState(data.data ? data.data : null)
+    const [employeesList, setEmployeesList] = useState(null)
     const [sortedEmployeesList, setSortedEmployeesList] = useState(employeesList)
     const [filteredEmployeesList, setFilteredEmployeesList] = useState(null)
     
@@ -44,10 +32,12 @@ export default function PrettyTable ({data, config}) {
     const activeEntriesNb = entriesNbToDisplay > entriesNb ? entriesNb : entriesNbToDisplay
 
     // Stores a part of table config into const
-        const accentColor = config.accentColor && config.useAccentColor ? {
-        color: config.accentColor,
-        borderColor: config.accentColor
-    } : null
+        const accentColor = config.accentColor && config.useAccentColor ?
+            {
+                color: config.accentColor,
+                borderColor: config.accentColor
+            }
+            : null
 
     // Triggered on table thead cells click.
     const handleTableClick = (type, e) => {
@@ -107,6 +97,9 @@ export default function PrettyTable ({data, config}) {
 
     // Filter table content based on search bar value
     const handleSearchByFilter = (e) => {
+        setFirstEntry(0)
+        setCurrentPage(1)
+
         const searchInputValue = e.target.value.trim()
         const matchingElements = []
 
@@ -143,9 +136,10 @@ export default function PrettyTable ({data, config}) {
     // Triggered when user change : 
     // the sorting type, the order (asc/decs), the entry number to display, employee search, new table page load
     useEffect(() => {
-        const employeesCopy = filteredEmployeesList !== null ? filteredEmployeesList : [...employeesList]
+        setEmployeesList(data.data)
+        const employeesCopy = filteredEmployeesList !== null ? filteredEmployeesList : data.data
 
-        const sortByType = employeesCopy.sort(( a, b ) => {
+        const sortByType = employeesCopy?.sort(( a, b ) => {
             const A = a[sortingType]
             const B = b[sortingType]
     
@@ -164,7 +158,7 @@ export default function PrettyTable ({data, config}) {
         setSortedEmployeesList(sortedEmployeesToDisplay)
         setEntriesNb(sortedEmployees.length)
     }, [sortingType, ascending, entriesNbToDisplay, filteredEmployeesList, firstEntry])
-    
+
     return <>
     <div id={`pt-table-${randomId}`}>
             {
@@ -176,7 +170,7 @@ export default function PrettyTable ({data, config}) {
                                     type="search"
                                     placeholder="Search employee(s)"
                                     id="pt-filters-search" 
-                                    onChange={(e) => handleSearchByFilter(e)} 
+                                    onChange={(e) => handleSearchByFilter(e)}
                                     className="pt-filters-search"
                                 />
                                 <img src={searchIcon} id="pt-search-icon" alt="search icon" className="pt-search-icon"/>
@@ -248,32 +242,7 @@ export default function PrettyTable ({data, config}) {
                             }
                         </tr>
                     </thead>
-                    <tbody className="pretty-tbody" id={`ptbody-${randomId}`}>
-                        {
-                            sortedEmployeesList.map((employee, i) => {
-                                // Format employee object to return an array of object (ex: [{firstName: Tom}, {}, ... ]
-                                const employeeData = formatEmployees(employee)
-                                return (
-                                    <tr className="pretty-tbody-rows"
-                                        id={`ptable-${randomId}-${i}`} 
-                                        key={`ptable-emp-tr-${employee[0]}-${i}`}
-                                    >
-                                        {
-                                            employeeData.map((employee, i) => {
-                                                const id = employee.value.trim().toLowerCase().replace(/\s/g,"").split("/").join("")
-                                                return <td
-                                                        className={`pretty-tbody-cells ${employee.key}`}
-                                                        key={`ptable-emp-td-${id}-${i}`}>
-                                                            {employee.value}
-                                                        </td>
-                                            })
-                                        }
-                                    </tr>
-                                    )
-                                }
-                            )
-                        }
-                    </tbody>
+                    <TableBody data={sortedEmployeesList} id={randomId} />
                 </table>
             </div>
             <div className="pt-footer">

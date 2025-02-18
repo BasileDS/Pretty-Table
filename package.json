@@ -1,6 +1,6 @@
 {
   "name": "pretty-table-ds",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "prettyTable/PrettyTable.jsx",
   "homepage": "https://github.com/basileds/pretty-table",
