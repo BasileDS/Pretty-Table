@@ -1,7 +1,7 @@
 {
   "name": "pretty-table-ds",
   "version": "1.0.9",
-  "description": "Create responsive tables to display, search et sort through your data.",
+  "description": "Create responsive tables to display, search et sort your data.",
   "main": "prettyTable/PrettyTable.jsx",
   "homepage": "https://github.com/basileds/pretty-table",
   "types": "dist/PrettyTable.d.ts",
@@ -18,6 +18,6 @@
   "keywords": [
     "table"
   ],
-  "author": "Yogesh Chavan <myogeshchavan97@gmail.com>",
+  "author": "Basile DS",
   "license": "ISC"
 }
