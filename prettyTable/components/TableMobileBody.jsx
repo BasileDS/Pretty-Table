@@ -29,7 +29,6 @@ export default function TableMobileBody ({id, data}) {
                 data?.map((employee, i) => {
                     // Format employee object to return an array of object (ex: [{firstName: Tom}, {}, ... ]
                     const employeeData = formatEmployees(employee)
-                    console.log(employeeData)
                     return (
                         <div
                             className="pretty-data-card"

@@ -1,7 +1,7 @@
 {
   "name": "pretty-table-ds",
-  "version": "1.0.8",
-  "description": "",
+  "version": "1.0.9",
+  "description": "Create responsive tables to display, search et sort through your data.",
   "main": "prettyTable/PrettyTable.jsx",
   "homepage": "https://github.com/basileds/pretty-table",
   "types": "dist/PrettyTable.d.ts",
