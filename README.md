@@ -30,8 +30,27 @@ But as you can see when loading the page, an error message pops up. Prety Table 
 
 ### The `{data}` and `{config}` mandatory objects
 
-
-
+Our Pretty Table component needs two arguments to work fine. The first one is `{data}` which expect to receive a object of two entries :
+1. First entry: an object of data to be displayed on our table.
+2. Second entry: an array of objects to configure the table columns.
+```
+{
+    const data = {
+        data: dataToDisplay,
+        columns: [
+            { title: 'First Name', data: 'firstName' },
+            { title: 'Last Name', data: 'lastName' },
+            { title: 'Start Date', data: 'startDate' },
+            { title: 'Department', data: 'department' },
+            { title: 'Date of Birth', data: 'dateOfBirth' },
+            { title: 'Street', data: 'street' },
+            { title: 'City', data: 'city' },
+            { title: 'State', data: 'state' },
+            { title: 'Zip Code', data: 'zipCode' }
+        ]
+    }
+}
+```
 
 ## Pretty Table Architecture
 
