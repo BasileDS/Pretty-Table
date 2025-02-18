@@ -16,23 +16,23 @@ Welcome to the *Pretty Table* official documentation. This library provide a Rea
 
 First of all, start your favorite code editor and open the project you would like to add PrettyTable to.
 Then, open the terminal and install Pretty Table using NPM :
-<code>npm install pretty-table-ds</code>
+`npm install pretty-table-ds`
 
 ## Pretty Table Architecture
 
-HR Net App
-├── src
-│ ├── assets
-│ │ └── assets.svg
-│ ├── components
-│ │ └── Component.jsx
-│ ├── pages
-│ │ └── Page.jsx
-│ ├── App.jsx
-│ ├── App.css
-│ ├── Main.jsx
-│ ├── Main.css
-│ └── index.html
+HR Net App <br>
+├── src<br>
+│ ├── assets<br>
+│ │ └── assets.svg<br>
+│ ├── components<br>
+│ │ └── Component.jsx<br>
+│ ├── pages<br>
+│ │ └── Page.jsx<br>
+│ ├── App.jsx<br>
+│ ├── App.css<br>
+│ ├── Main.jsx<br>
+│ ├── Main.css<br>
+│ └── index.html<br>
 
 The Pretty Table library is built using *ReactJS* and is available 
 
