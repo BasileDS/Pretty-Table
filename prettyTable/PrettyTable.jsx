@@ -7,6 +7,7 @@ import { useEffect } from "react"
 import "./pretty-table.css"
 import searchIcon from "./assets/search-button.svg"
 import TableBody from "./components/TableBody"
+import TableMobileBody from "./components/TableMobileBody"
 
 /** 
  * React component : returns the pretty table based on data object and config
@@ -23,6 +24,7 @@ export default function PrettyTable ({data, config}) {
     const [employeesList, setEmployeesList] = useState(null)
     const [sortedEmployeesList, setSortedEmployeesList] = useState(employeesList)
     const [filteredEmployeesList, setFilteredEmployeesList] = useState(null)
+    const [isMobileDevice, setIsMobileDevice] = useState(null)
     
     const activeNbToDisplayRef = useRef(5)
     const activeCellFilterRef = useRef(null)
@@ -32,12 +34,26 @@ export default function PrettyTable ({data, config}) {
     const activeEntriesNb = entriesNbToDisplay > entriesNb ? entriesNb : entriesNbToDisplay
 
     // Stores a part of table config into const
-        const accentColor = config.accentColor && config.useAccentColor ?
-            {
-                color: config.accentColor,
-                borderColor: config.accentColor
-            }
-            : null
+    const accentColor = config.accentColor && config.useAccentColor ?
+        {
+            color: config.accentColor,
+            borderColor: config.accentColor
+        }
+        : null
+
+    let isMobile = null
+    const mobileDevice = () => {
+        const screenWidth = window.innerWidth
+        if (isMobile === null) {
+            screenWidth >= 980 ? isMobile = false : isMobile = true
+        } else {
+            isMobileDevice ?
+                screenWidth >= 980 && setIsMobileDevice(false)
+                : screenWidth <= 980 && setIsMobileDevice(true)
+        }
+    }
+    window.addEventListener("resize", mobileDevice)
+    mobileDevice()
 
     // Triggered on table thead cells click.
     const handleTableClick = (type, e) => {
@@ -223,27 +239,31 @@ export default function PrettyTable ({data, config}) {
                 </div>
             }
             <div className="pretty-table-container">
-                <table className="pretty-table" id={`ptable-${randomId}`}>
-                    <thead className="pretty-thead">
-                        <tr className="pretty-thead-row">
-                            {
-                                data.columns.map( (col, i) => {
-                                    const key = `ptable-col-${col.data}-${i}`
-                                    return <th 
-                                            className={`pretty-thead-cells ${col.data}`}
-                                            id={`pt-${col.data}`}
-                                            scope="col"
-                                            key={key}
-                                            aria-sort="none"
-                                            onClick={(e) => handleTableClick(col.data, e)}>
-                                                {col.title}
-                                            </th>
-                                })
-                            }
-                        </tr>
-                    </thead>
-                    <TableBody data={sortedEmployeesList} id={randomId} />
-                </table>
+                {
+                    isMobileDevice || isMobile ?
+                        <TableMobileBody data={sortedEmployeesList} id={randomId} />
+                        : <table className="pretty-table" id={`ptable-${randomId}`}>
+                            <thead className="pretty-thead">
+                                <tr className="pretty-thead-row">
+                                    {
+                                        data.columns.map( (col, i) => {
+                                            const key = `ptable-col-${col.data}-${i}`
+                                            return <th 
+                                                    className={`pretty-thead-cells ${col.data}`}
+                                                    id={`pt-${col.data}`}
+                                                    scope="col"
+                                                    key={key}
+                                                    aria-sort="none"
+                                                    onClick={(e) => handleTableClick(col.data, e)}>
+                                                        {col.title}
+                                                    </th>
+                                        })
+                                    }
+                                </tr>
+                            </thead>
+                            <TableBody data={sortedEmployeesList} id={randomId} />
+                        </table>
+                }
             </div>
             <div className="pt-footer">
                 <div className="pt-footer-nav">
