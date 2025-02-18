@@ -101,8 +101,6 @@ The config object is a basic object that accepts several informations such as th
 
 Future developpments will lead to new configuration options that will be available by upading your `config` object.
 As an example, the darkmode could be added later by adding the following line to the `config` object :
-
-**Config object content with dark mode**
 ```
     const config = {
         ... ,
@@ -110,6 +108,9 @@ As an example, the darkmode could be added later by adding the following line to
         ...
     }
 ```
+
+#### Finalizing the Pretty Table configuration
+
 
 Since we have created the `config` object, we can add it to our `<PrettyTable />` component to finalize the table configuration.
 Back our page, let's add the `config` object to our component :
@@ -128,15 +129,16 @@ Add more data and try changing `config` object values to see how it works and ho
 
 ## Pretty Table Architecture
 
-Pretty Table Library<br>
-├── Pretty Table<br>
-│ ├── assets<br>
-│ │ └── asset.svg<br>
-│ ├── utils<br>
-│ │ └── logic.js<br>
-│ ├── PrettyTable.jsx<br>
-│ ├── pretty-table.css<br>
-
+```
+    Pretty Table Library<br>
+    ├── Pretty Table<br>
+    │ ├── assets<br>
+    │ │ └── asset.svg<br>
+    │ ├── utils<br>
+    │ │ └── logic.js<br>
+    │ ├── PrettyTable.jsx<br>
+    │ ├── pretty-table.css<br>
+```
 Its structure follows the React basics recommendations, using specific folders for pages, components, and assets. The `App.jsx` file allows us to configure the *React Router* while the `Main.jsx` file displays the app on the page's `<body>`.
 
 At this stage of the app development, which is still early, the structure is not fixed and may change based on upcoming development steps.
