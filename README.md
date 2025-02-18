@@ -28,9 +28,16 @@ The library is installed and the components is now available on our page. We can
 The library has been installed, you've added your first table, congrats !
 But as you can see when loading the page, an error message pops up. Prety Table component needs two arguments to work as expected and we gaved none of them. Let's add them right  now.
 
-### The `{data}` and `{config}` mandatory objects
+### The `data` and `config` mandatory arguments
 
-Our Pretty Table component needs two arguments to work fine. The first one is `{data}` which expect to receive a object of two entries :
+Our Pretty Table component needs two arguments to work fine. The `data` and `config` are mandatory arguments to pass to our components as props.
+
+- `data` gets an object with two entries. The data to display and the table columns configuration.
+- `config` gets an object table UI and features configuration. To choose a accent color for example.
+
+#### Creating the `data` object
+
+The first one is `data` which expect to receive a object of two entries :
 
 1. First entry: an object or JSON file of data to be displayed on our table. (Ex: yourDataToDisplay)
 2. Second entry: an array of objects to configure the table columns. These objects must have a `title` and a `data` entry.
@@ -73,6 +80,51 @@ Those informations are mandatory for the table to work as expected.
 ```
 
 **! important :** As you can see in the above two examples, the data objects to be displayed on our table must have the exact same structure as the columns data configuration.
+
+Our page now have a pretty table set up with some data to display, but it still returns an arror when loading the page. This is because we did not passed the second arguments to our `<PrettyTable />` component
+
+#### Creating the `config` object
+
+We have allready created our `data`object. Now what we need to do to finalize the table configuration is to pass the PrettyTable second props which is the `config`object.
+
+The config object is a basic object that accepts several informations such as the `accentColor` and the `searchBar` configuration.
+
+**Config object content**
+```
+    const config = {
+        accentColor: "#50a2ff",
+        useAccentColor: true,
+        showSearchBar: true,
+        searchBarToLeft: false
+    }
+```
+
+Future developpments will lead to new configuration options that will be available by upading your `config` object.
+As an example, the darkmode could be added later by adding the following line to the `config` object :
+
+**Config object content with dark mode**
+```
+    const config = {
+        ... ,
+        useDarkMode: true,
+        ...
+    }
+```
+
+Since we have created the `config` object, we can add it to our `<PrettyTable />` component to finalize the table configuration.
+Back our page, let's add the `config` object to our component :
+
+```
+    function MyPage () {
+        return (
+            <PrettyTable data={data} config={config} />
+        )
+    }
+```
+
+Here it is, your tbale should now display the tabl content you've configured on the `data` and `config` objects.
+
+Add more data and try changing `config` object values to see how it works and how to use the Pretty Table react library.
 
 ## Pretty Table Architecture
 
