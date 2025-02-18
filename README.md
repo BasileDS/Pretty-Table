@@ -15,26 +15,34 @@ Welcome to the *Pretty Table* official documentation. This library provide a Rea
 ## Install Pretty Table on you project
 
 First of all, start your favorite code editor and open the project you would like to add PrettyTable to.
-Then, open the terminal and install Pretty Table using NPM :
+Then, open the terminal and install Pretty Table using NPM :<br>
 `npm install pretty-table-ds`
+
+### Creating you first Pretty Table
+
+Now you can start using Pretty Table on your project. Start by importing its main React component on the page you would like to display the table. To do so, write this this line on top of your file :<br>
+`import PrettyTable from 'pretty-table-ds'`
+
+The library is installed and the components is now available on our page. We can now call it on our React page by adding `<PrettyTable />` where we want to display the table.
+
+The library has been installed, you've added your first table, congrats !
+But as you can see when loading the page, an error message pops up. Prety Table component needs two arguments to work as expected and we gaved none of them. Let's add them right  now.
+
+### The `{data}` and `{config}` mandatory objects
+
+
+
 
 ## Pretty Table Architecture
 
-HR Net App <br>
-├── src<br>
+Pretty Table Library<br>
+├── Pretty Table<br>
 │ ├── assets<br>
-│ │ └── assets.svg<br>
-│ ├── components<br>
-│ │ └── Component.jsx<br>
-│ ├── pages<br>
-│ │ └── Page.jsx<br>
-│ ├── App.jsx<br>
-│ ├── App.css<br>
-│ ├── Main.jsx<br>
-│ ├── Main.css<br>
-│ └── index.html<br>
-
-The Pretty Table library is built using *ReactJS* and is available 
+│ │ └── asset.svg<br>
+│ ├── utils<br>
+│ │ └── logic.js<br>
+│ ├── PrettyTable.jsx<br>
+│ ├── pretty-table.css<br>
 
 Its structure follows the React basics recommendations, using specific folders for pages, components, and assets. The `App.jsx` file allows us to configure the *React Router* while the `Main.jsx` file displays the app on the page's `<body>`.
 
