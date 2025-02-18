@@ -127,21 +127,23 @@ Here it is, your tbale should now display the tabl content you've configured on 
 
 Add more data and try changing `config` object values to see how it works and how to use the Pretty Table react library.
 
-## Pretty Table Architecture
+## Pretty Table Library Architecture
+
+The Pretty Table library architecture is very basic with an `assets` and an `utils` folder respectively containing visual assets and logic js files. The core of the component is the `PrettyTable.jsx` file and the styles are defined under the `pretty-table.css` file. 
 
 ```
-    Pretty Table Library<br>
-    ├── Pretty Table<br>
-    │ ├── assets<br>
-    │ │ └── asset.svg<br>
-    │ ├── utils<br>
-    │ │ └── logic.js<br>
-    │ ├── PrettyTable.jsx<br>
-    │ ├── pretty-table.css<br>
+    Pretty Table Library
+    ├── assets
+    │ └── asset.svg
+    ├── utils
+    │ └── logic.js
+    ├── PrettyTable.jsx
+    ├── pretty-table.css
 ```
-Its structure follows the React basics recommendations, using specific folders for pages, components, and assets. The `App.jsx` file allows us to configure the *React Router* while the `Main.jsx` file displays the app on the page's `<body>`.
 
-At this stage of the app development, which is still early, the structure is not fixed and may change based on upcoming development steps.
+## Why Pretty Table for you tables
 
-### Pretty Table App Structure
+This library has been created based on an older table jQuery library to enhance the design but more than this, make it more suitable to further developpments by working with a widely used JS library: ReactJS.
 
+### Credits
+Library created by Basile DS for HR Net OC project.
