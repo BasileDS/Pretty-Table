@@ -2,7 +2,7 @@
 
 Welcome to the *Pretty Table* official documentation. This library provide a React table component to enhance your website data presentation. We try to gather here all usefull information dealing with the Pretty Table App and further developments, to make sure everyone can participate to its improvement.
 
-## Functionalities
+## Features
 - Responsive react table component
 - Create your table with a simple "data" object
 - Configure your table with a simple "config" object
